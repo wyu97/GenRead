@@ -1,0 +1,7 @@
+{"type": "question answering", "task": "step1", "pid": 1, "prompt": "Provide a background document from Wikipedia to answer the given question. \n\n {query} \n\n"}
+{"type": "question answering", "task": "step1", "pid": 2, "prompt": "Generate a background document from Wikipedia to answer the given question. \n\n {query} \n\n"}
+{"type": "question answering", "task": "step2", "pid": 1, "prompt": "Refer to the passage below and answer the following question with just one entity. \n\n Passage: {background} \n\n Question: {query} \n\n The answer is"}
+{"type": "fact checking", "task": "step1", "pid": 1, "prompt": "Generate a background document from Wikipedia to support or refute the statement. \n\n Statement: {query} \n\n"}
+{"type": "fact checking", "task": "step2", "pid": 1, "prompt": "{background} \n\n claim: {query} \n\n Is the claim true or false?"}
+{"type": "dialogue system", "task": "step1", "pid": 1, "prompt": "Generate a background document from Wikipedia to support or refute the statement. \n\n Statement: {query} \n\n"}
+{"type": "dialogue system", "task": "step2", "pid": 1, "prompt": "{background} \n\n\n\n {query} \n\n"}
