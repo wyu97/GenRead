@@ -18,7 +18,12 @@
 
 **Step1: generate background document.**
 
-`python mainfunc.py --dataset {dataset} --task step1 --split test`
+```
+python mainfunc.py 
+  --dataset {dataset} 
+  --task step1 
+  --split test
+```
 
 -- Note: we use the `text-davinci-002` in our experiment; we use greedy search in the zero-shot setting, to ensure the reproducibility of our experiments. 
 
@@ -35,20 +40,35 @@
 
 **Method1: use sampling to generate multiple documents.**
 
-`python mainfunc.py --dataset {dataset} --task step1 --split test --num_sequence 10 --temperature 0.95`
+```
+python mainfunc.py 
+  --dataset {dataset} 
+  --task step1 
+  --split test 
+  --num_sequence 10 
+  --temperature 0.95
+```
 
 -- We note that when decoding with sample-based methods, the outputs may be different each time. So we cannot guarantee that your output will be exactly the same as the one we provide. [\[supervised: sampling\]](https://drive.google.com/drive/folders/1ZHmbodWMx1WOyyPFe60_vI6rF3piFAxg?usp=sharing)
 
 **Method2: use sampling to generate multiple documents.**
 
-`python mainfunc.py --dataset {dataset} --task step1 --split test --num_sequence 1 --temperature 0.95 --clustering`
+```
+python mainfunc.py 
+  --dataset {dataset} 
+  --task step1 
+  --split test 
+  --num_sequence 1 
+  --temperature 0.95 
+  --clustering
+```
 
 -- We note that when using different in-context demonstrations, the outputs may be different each time. So we cannot guarantee that your output will be exactly the same as the one we provide. [\[supervised: clustering\]](https://drive.google.com/drive/folders/1DNjTTOLKi24wohJKu1Z-v6b4izfymlLu?usp=sharingg)
 
 
 **Fusion-in-decoder: train a reader model to infer answer from documents**
 
--- We use the FiD code from its official GitHub repository [(link)](https://github.com/facebookresearch/FiD).
+-- We use the FiD code from its official GitHub repository [\[link\]](https://github.com/facebookresearch/FiD).
 
 **We will add the trained checkpoint to huggingface models in the next few days. If you want to get timely updates, please click "Watch".**
 
