@@ -135,13 +135,13 @@ if __name__ == "__main__":
     
     # Required parameters
     parser.add_argument("--dataset", default=None, type=str, required=True,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="dataset name: [nq, tqa, webq, wizard, fever, fm2]",
     )
     parser.add_argument("--engine", default='text-davinci-002', type=str, required=False,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="text-davinci-002 (used in our experiments), code-davinci-002",
     )
     parser.add_argument("--pid", default='1', type=str, required=False,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="prompt id used in the first step, default=1",
     )
 
     args = parser.parse_args()
@@ -166,7 +166,7 @@ if __name__ == "__main__":
     step1(infile, embfile) # step1: generate embeddings
     step2(embfile, clsfile) # step2: k-means cluster
 
-    promptlines = open(f'inprompts/regular_prompts.jsonl', 'r').readlines()
+    promptlines = open(f'inprompts/regular.jsonl', 'r').readlines()
     for line in promptlines:
         line = json.loads(line)
 

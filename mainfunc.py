@@ -113,23 +113,22 @@ if __name__ == "__main__":
     
     # Required parameters
     parser.add_argument("--dataset", default=None, type=str, required=True,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="dataset name: [nq, tqa, webq, wizard, fever, fm2]",
     )
     parser.add_argument("--task", default=None, type=str, required=True,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="task name: [step1, step2], should be either 1 or 2",
     )
     parser.add_argument("--split", default=None, type=str, required=True,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="dataset split: [train, dev, test]",
+    )
+    parser.add_argument("--clustering", action='store_true',
+        help="if clustering prompt, we enumerate each prompts in the prompt file",
     )
     parser.add_argument("--engine", default='text-davinci-002', type=str, required=False,
-        help="The output directory where the model checkpoints and predictions will be written.",
+        help="text-davinci-002 (used in our experiments), code-davinci-002",
     )
-    parser.add_argument("--num_sequence", default=1, type=int, required=False,
-        help="The output directory where the model checkpoints and predictions will be written.",
-    )
-    parser.add_argument("--temperature", default=0, type=float, required=False,
-        help="The output directory where the model checkpoints and predictions will be written.",
-    )
+    parser.add_argument("--num_sequence", default=1, type=int, required=False)
+    parser.add_argument("--temperature", default=0, type=float, required=False)
 
     args = parser.parse_args()
 
@@ -137,7 +136,7 @@ if __name__ == "__main__":
         datatype = 'question answering'
     elif args.dataset in ['fever', 'fm2']:
         datatype = 'fact checking'
-    elif args.dataset in ['wow']: 
+    elif args.dataset in ['wizard']: 
         datatype = 'dialogue system'
     else: # other task type?
         raise NotImplementedError
@@ -150,9 +149,14 @@ if __name__ == "__main__":
         else: # QA and Fact ...
             max_tokens = 10
 
-    promptlines = open(f'inprompts/regular_prompts.jsonl', 'r').readlines()
+    promptfile = 'cluster' if args.clustering else 'regular'
+    promptlines = open(f'inprompts/{promptfile}.jsonl', 'r').readlines()
+
     for line in promptlines:
         line = json.loads(line)
+
+        if args.cluster and args.dataset != line.get('dataset'):
+            continue ## for clustering, each dataset has own prompts
 
         if line['type'] == datatype and line['task'] == args.task:
             prompt = line['prompt']
@@ -166,4 +170,8 @@ if __name__ == "__main__":
                 outputs = step2(args.dataset, datatype, args.split, 
                     max_tokens, args.engine, prompt, pid)
 
-            break ## only use the first prompt 
+            else:  ## should be either 1 or 2
+                raise NotImplementedError
+            
+            if promptfile == 'regular':
+                break ## only use the first prompt 
