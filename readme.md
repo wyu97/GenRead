@@ -14,6 +14,8 @@
 
 -- From Google drive: (we unified the formats of the above datasets) [\[link\]](https://drive.google.com/drive/folders/1lFFTklW_0HuR53hLpFdLClgfSAhXn_2f?usp=sharing)
 
+-- (Please put them into `indataset` folder. Now it contains `webq` and `fm2`.)
+
 ### Zero-shot Setting 
 
 **Step1: generate background document.**
