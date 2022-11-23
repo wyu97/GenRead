@@ -24,7 +24,7 @@ def readfiles(infile):
     if len(lines[0]) == 1 and lines[0].get('prompt'): 
         lines = lines[1:] ## skip prompt line
 
-    return lines
+    return lines[:100]
 
 
 def step1(dataset, datatype, split, max_tokens, engine, prompt, pid, n, temp):
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     for line in promptlines:
         line = json.loads(line)
 
-        if args.cluster and args.dataset != line.get('dataset'):
+        if args.clustering and args.dataset != line.get('dataset'):
             continue ## for clustering, each dataset has own prompts
 
         if line['type'] == datatype and line['task'] == args.task:
