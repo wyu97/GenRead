@@ -24,7 +24,7 @@ def readfiles(infile):
     if len(lines[0]) == 1 and lines[0].get('prompt'): 
         lines = lines[1:] ## skip prompt line
 
-    return lines[:100]
+    return lines
 
 
 def step1(dataset, datatype, split, max_tokens, engine, prompt, pid, n, temp):

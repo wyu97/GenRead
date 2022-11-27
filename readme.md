@@ -74,13 +74,13 @@ python clusterfunc.py
 
 - Download our trained FiD checkpoint at [Huggingface Hub](https://huggingface.co/models). 
 
-  - GenRead-3B-NQ, performance on NQ test: 45.55
+  - [GenRead-3B-NQ](https://huggingface.co/wyu1/GenRead-3B-NQ), performance on NQ test: 45.55
   ```
   git lfs install
   git clone https://huggingface.co/wyu1/GenRead-3B-NQ
   ```
 
-  - GenRead-3B-TQA, performance on TQA test: 71.55
+  - [GenRead-3B-TQA](https://huggingface.co/wyu1/GenRead-3B-TQA), performance on TQA test: 71.55
   ```
   git lfs install
   git clone https://huggingface.co/wyu1/GenRead-3B-TQA
