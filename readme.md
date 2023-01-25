@@ -2,7 +2,7 @@
 
 ### Introduction & Setup
 
-- This is the official implementation of our *pre-print* paper **"Generate rather than Retrieve: Large Language Models are Strong Context Generators"** [\[arXiv\]](https://arxiv.org/abs/2209.10063).
+- This is the official implementation of our *pre-print* paper **"Generate rather than Retrieve: Large Language Models are Strong Context Generators"**, in ICLR 2023 [\[OpenReview\]](https://openreview.net/forum?id=fB0hRu9GZUS) [\[arXiv\]](https://arxiv.org/abs/2209.10063).
 
 - Create an environment and install openai package via `pip install openai`.
 
@@ -32,6 +32,13 @@ python mainfunc.py
 - Note: if you have limited access to OpenAI API, you could directly use our outputs, without spending money on reproducing our experiments. [\[zero-shot: step1\]](https://drive.google.com/drive/folders/1u7VUOX2l86g4JkMPxPZ1vhMW8O7mwRZw?usp=sharing)
 
 **Step2: infer answer from document.**
+
+```
+python mainfunc.py 
+  --dataset {dataset} 
+  --task step2 
+  --split test
+```
 
 - Trick: we remove the `\n` in the generated documents. 
 
@@ -91,11 +98,11 @@ python clusterfunc.py
 ## Citation
 
 ```
-@article{yu2022generate,
+@inproceedings{yu2023generate,
   title={Generate rather than retrieve: Large language models are strong context generators},
   author={Yu, Wenhao and Iter, Dan and Wang, Shuohang and Xu, Yichong and Ju, Mingxuan and Sanyal, Soumya and Zhu, Chenguang and Zeng, Michael and Jiang, Meng},
-  journal={arXiv preprint arXiv:2209.10063},
-  year={2022}
+  booktitle={International Conference for Learning Representation (ICLR)},
+  year={2023}
 }
 ```
 
