@@ -79,7 +79,7 @@ python clusterfunc.py
 
 - We use the FiD code from its official GitHub repository [\[link\]](https://github.com/facebookresearch/FiD).
 
-- Download our trained FiD checkpoint at [Huggingface Hub](https://huggingface.co/models). 
+- Download our trained FiD checkpoint at [Hugging Face Hub](https://huggingface.co/models). 
 
   - [GenRead-3B-NQ](https://huggingface.co/wyu1/GenRead-3B-NQ), performance on NQ test: 45.55
   ```
